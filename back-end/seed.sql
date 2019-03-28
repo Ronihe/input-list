@@ -3,9 +3,9 @@ CREATE DATABASE inputs_db;
 
 \c inputs_db
 
-CREATE TABLE jokes
+CREATE TABLE inputs
 (
   id TEXT PRIMARY KEY,
-  input TEXT NOT NULL,
+  input TEXT NOT NULL
   -- votes INTEGER DEFAULT 0
 );
