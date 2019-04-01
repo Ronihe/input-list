@@ -5,7 +5,7 @@ CREATE DATABASE inputs_db;
 
 CREATE TABLE inputs
 (
-  id TEXT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   input TEXT NOT NULL
   -- votes INTEGER DEFAULT 0
 );

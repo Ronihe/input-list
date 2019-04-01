@@ -18,5 +18,7 @@ const selectInputsDomain = state => state.get('inputs', initialState);
 const makeSelectInputs = () =>
   createSelector(selectInputsDomain, substate => substate.toJS());
 
+const makeInputsSelector = () =>
+  createSelector(selectInputsDomain, substate => substate.get('inputs'));
 export default makeSelectInputs;
-export { selectInputsDomain };
+export { selectInputsDomain, makeInputsSelector };

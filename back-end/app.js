@@ -21,7 +21,7 @@ app.get('/inputs', async function(req, res, next) {
 
 app.post('/inputs', async function(req, res, next) {
   try {
-    const input = await Input.create(req.body);
+    const input = await Input.createOne(req.body);
     return res.status(201).json({ input });
   } catch (err) {
     return next(err);

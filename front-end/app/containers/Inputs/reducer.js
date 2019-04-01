@@ -16,6 +16,7 @@ export const initialState = fromJS({ inputs: [], loading: false, error: true });
 function inputsReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_INPUTS:
+      console.log('loading inputs');
       return state.set('loading', true).set('error', false);
     case LOAD_INPUTS_SUCCESS:
       return state

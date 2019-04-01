@@ -14,14 +14,23 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectInputs from './selectors';
+import { makeInputsSelector } from './selectors';
+import { loadInputs } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Inputs extends React.Component {
+  componentDidMount() {
+    // load inputs
+    this.props.loadInputs();
+  }
+
   render() {
+    const inputs = [...this.props.inputs];
+    console.log('inputs', typeof inputs, inputs);
+    console.log('loadInputs', typeof loadInputs);
     return (
       <div>
         <Helmet>
@@ -35,16 +44,19 @@ export class Inputs extends React.Component {
 }
 
 Inputs.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  loadInputs: PropTypes.func.isRequired,
+  inputs: PropTypes.any,
 };
 
 const mapStateToProps = createStructuredSelector({
-  inputs: makeSelectInputs(),
+  inputs: makeInputsSelector(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    loadInputs: () => {
+      dispatch(loadInputs());
+    },
   };
 }
 

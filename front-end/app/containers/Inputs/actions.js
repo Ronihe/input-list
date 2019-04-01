@@ -11,6 +11,7 @@ import {
 } from './constants';
 
 export function loadInputs() {
+  console.log('load inputs action');
   return {
     type: LOAD_INPUTS,
   };
