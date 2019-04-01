@@ -1,13 +1,18 @@
-/*
+/**
  *
  * NewInputForm actions
+ * @param  {newInput} newInput The new text of the input field
+ *
+ * @return {object}    An action object with a type of CREATE_INPUT
+ *
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { CREATE_INPUT } from './constants';
 
-export function defaultAction() {
+export function createNewInput(newInput) {
   return {
-    type: DEFAULT_ACTION,
+    type: CREATE_INPUT,
+    newInput,
   };
 }

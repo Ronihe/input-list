@@ -8,7 +8,7 @@ export function* fetchInputs() {
   const requestURL = 'http://localhost:3001/inputs';
   try {
     const result = yield call(request, requestURL);
-    const inputs = result.inputs;
+    const inputs = [...result.inputs];
     yield put(loadInputsSuccess(inputs));
   } catch (err) {
     yield put(loadInputsError(err));

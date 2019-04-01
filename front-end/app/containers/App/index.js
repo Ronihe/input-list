@@ -10,8 +10,8 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
 import Inputs from 'containers/Inputs/Loadable';
+import NewInputForm from 'containers/NewInputForm/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -22,12 +22,12 @@ export default function App() {
       <NavLink exact to="/">
         inputs
       </NavLink>{' '}
-      <NavLink exact to="/inputs">
+      <NavLink exact to="/newinput">
         new Input
       </NavLink>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/inputs" component={Inputs} />
+        <Route exact path="/" component={Inputs} />
+        <Route exact path="/newinput" component={NewInputForm} />
         {/* make api from back end get the list input from the render it on the screen */}
         {/* todo: add a new input form component;  */}
         <Route component={NotFoundPage} />

@@ -14,10 +14,14 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectNewInputForm from './selectors';
+import { makeSelectNewinput } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
+
+import Form from './Form';
+import Input from './Input';
+
+import { createNewInput } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class NewInputForm extends React.Component {
@@ -28,23 +32,35 @@ export class NewInputForm extends React.Component {
           <title>NewInputForm</title>
           <meta name="description" content="Description of NewInputForm" />
         </Helmet>
-        <FormattedMessage {...messages.header} />
+        {/* <Form onSubmit={this.props.onSubmitForm}> */}
+        <label htmlFor="input">
+          <Input
+            id="input"
+            type="text"
+            placeholder="random ideas"
+            value={this.props.newInput}
+            onChange={this.props.createNewInput}
+          />
+        </label>
+        {/* </Form> */}
       </div>
     );
   }
 }
 
 NewInputForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  newInput: PropTypes.string,
+  createNewInput: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  newInputForm: makeSelectNewInputForm(),
+  newInput: makeSelectNewinput(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    createNewInput: evt => dispatch(createNewInput(evt.target.value)),
   };
 }
 

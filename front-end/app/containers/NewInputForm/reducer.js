@@ -5,14 +5,14 @@
  */
 
 import { fromJS } from 'immutable';
-import { DEFAULT_ACTION } from './constants';
+import { CREATE_INPUT } from './constants';
 
-export const initialState = fromJS({});
+export const initialState = fromJS({ newInput: '' });
 
 function newInputFormReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case CREATE_INPUT:
+      return state.set('newInput', action.newInput);
     default:
       return state;
   }

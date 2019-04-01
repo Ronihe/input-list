@@ -50,6 +50,7 @@ Inputs.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   inputs: makeInputsSelector(),
+  // loadInputs
 });
 
 function mapDispatchToProps(dispatch) {

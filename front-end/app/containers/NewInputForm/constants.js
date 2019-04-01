@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/NewInputForm/DEFAULT_ACTION';
+export const CREATE_INPUT = 'app/NewInputForm/CREATE_INPUT';

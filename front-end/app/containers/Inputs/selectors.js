@@ -20,5 +20,10 @@ const makeSelectInputs = () =>
 
 const makeInputsSelector = () =>
   createSelector(selectInputsDomain, substate => substate.get('inputs'));
+
+const makeInputLoading = () =>
+  createSelector(selectInputsDomain, substate => substate.get('loading'));
+
 export default makeSelectInputs;
-export { selectInputsDomain, makeInputsSelector };
+
+export { selectInputsDomain, makeInputsSelector, makeInputLoading };

@@ -16,8 +16,10 @@ const selectNewInputFormDomain = state =>
  * Default selector used by NewInputForm
  */
 
-const makeSelectNewInputForm = () =>
-  createSelector(selectNewInputFormDomain, substate => substate.toJS());
+const makeSelectNewinput = () =>
+  createSelector(selectNewInputFormDomain, substate =>
+    substate.get('newInput'),
+  );
 
-export default makeSelectNewInputForm;
-export { selectNewInputFormDomain };
+// export default makeSelectNewInputForm;
+export { selectNewInputFormDomain, makeSelectNewinput };
