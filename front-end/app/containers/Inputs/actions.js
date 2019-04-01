@@ -4,10 +4,28 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import {
+  LOAD_INPUTS,
+  LOAD_INPUTS_SUCCESS,
+  LOAD_INPUTS_ERROR,
+} from './constants';
 
-export function defaultAction() {
+export function loadInputs() {
   return {
-    type: DEFAULT_ACTION,
+    type: LOAD_INPUTS,
+  };
+}
+
+export function loadInputsSuccess(inputs) {
+  return {
+    type: LOAD_INPUTS_SUCCESS,
+    inputs,
+  };
+}
+
+export function loadInputsError(error) {
+  return {
+    type: LOAD_INPUTS_ERROR,
+    error,
   };
 }
