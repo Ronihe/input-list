@@ -1,7 +1,7 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
-import { loadInputsError, loadInputsSuccess } from './actions';
-import { LOAD_INPUTS } from './constants';
+import { loadInputsError, loadInputsSuccess } from '../App/actions';
+import { LOAD_INPUTS } from '../App/constants';
 
 export function* fetchInputs() {
   console.log('did I get here?');

@@ -10,7 +10,7 @@ import {
   LOAD_INPUTS_ERROR,
   SEND_NEWINPUT,
   SEND_NEWINPUT_SUCCESS,
-  SEND_NEWINPUT_ERROR
+  SEND_NEWINPUT_ERROR,
 } from './constants';
 
 export function loadInputs() {
@@ -32,22 +32,22 @@ export function loadInputsError(error) {
     error,
   };
 }
-export function sendInputs() {
+export function sendNewInput() {
   return {
-    type: ,
+    type: SEND_NEWINPUT,
   };
 }
 
-export function loadInputsSuccess(inputs) {
+export function sendNewInputSuccess(newInput) {
   return {
-    type: LOAD_INPUTS_SUCCESS,
-    inputs,
+    type: SEND_NEWINPUT_SUCCESS,
+    newInput,
   };
 }
 
-export function loadInputsError(error) {
+export function sendNewInputError(error) {
   return {
-    type: LOAD_INPUTS_ERROR,
+    type: SEND_NEWINPUT_ERROR,
     error,
   };
 }

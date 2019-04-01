@@ -9,14 +9,22 @@ import {
   LOAD_INPUTS,
   LOAD_INPUTS_SUCCESS,
   LOAD_INPUTS_ERROR,
+  SEND_NEWINPUT,
+  SEND_NEWINPUT_SUCCESS,
+  SEND_NEWINPUT_ERROR,
 } from './constants';
 
-export const initialState = fromJS({ inputs: [], loading: false, error: true });
+export const initialState = fromJS({
+  inputs: [],
+  newInput: '',
+  loading: false,
+  error: true,
+  sending: false,
+});
 
 function inputsReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_INPUTS:
-      console.log('loading inputs');
       return state.set('loading', true).set('error', false);
     case LOAD_INPUTS_SUCCESS:
       return state
@@ -24,6 +32,16 @@ function inputsReducer(state = initialState, action) {
         .set('error', false)
         .set('inputs', action.inputs);
     case LOAD_INPUTS_ERROR:
+      return state.set('loading', false).set('error', action.error);
+    case SEND_NEWINPUT:
+      console.log('SENDING INPUT');
+      return state.set('sending', true).set('error', false);
+    case SEND_NEWINPUT_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', false)
+        .set('newInput', action.newInput);
+    case SEND_NEWINPUT_ERROR:
       return state.set('loading', false).set('error', action.error);
     default:
       return state;

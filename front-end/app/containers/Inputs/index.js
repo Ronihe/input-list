@@ -14,9 +14,9 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeInputsSelector } from './selectors';
-import { loadInputs } from './actions';
-import reducer from './reducer';
+import { makeInputsSelector } from '../App/selectors';
+import { loadInputs } from '../App/actions';
+import reducer from '../App/reducer';
 import saga from './saga';
 import messages from './messages';
 
@@ -50,7 +50,6 @@ Inputs.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   inputs: makeInputsSelector(),
-  // loadInputs
 });
 
 function mapDispatchToProps(dispatch) {
