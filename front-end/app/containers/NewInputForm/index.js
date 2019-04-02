@@ -18,12 +18,12 @@ import { makeSelectNewinput } from './selectors';
 import reducer from './reducer';
 import saga from '../App/saga';
 
-import Input from './Input';
+import Input from '../../components/Input';
 
 import { changeInput, clearInput } from './actions';
 import { sendNewInput } from '../App/actions';
 
-import Button from '../../components/atoms/Button';
+import Button from '../../components/Button';
 
 /* eslint-disable react/prefer-stateless-function */
 export class NewInputForm extends React.Component {
