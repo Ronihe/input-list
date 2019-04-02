@@ -17,7 +17,7 @@ import injectReducer from 'utils/injectReducer';
 import { makeInputsSelector } from '../App/selectors';
 import { loadInputs } from '../App/actions';
 import reducer from '../App/reducer';
-import saga from './saga';
+import saga from '../App/saga';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */

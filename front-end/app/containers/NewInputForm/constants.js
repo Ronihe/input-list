@@ -4,4 +4,4 @@
  *
  */
 
-export const CREATE_INPUT = 'app/NewInputForm/CREATE_INPUT';
+export const CHANGE_INPUT = 'app/NewInputForm/CHANGE_INPUT';

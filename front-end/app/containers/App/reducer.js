@@ -27,6 +27,7 @@ function inputsReducer(state = initialState, action) {
     case LOAD_INPUTS:
       return state.set('loading', true).set('error', false);
     case LOAD_INPUTS_SUCCESS:
+      console.log('load success', state.inputs);
       return state
         .set('loading', false)
         .set('error', false)
@@ -37,10 +38,12 @@ function inputsReducer(state = initialState, action) {
       console.log('SENDING INPUT');
       return state.set('sending', true).set('error', false);
     case SEND_NEWINPUT_SUCCESS:
+      console.log('SEND_NEWINPUT_SUCCESS', state.inputs, action);
       return state
         .set('loading', false)
         .set('error', false)
-        .set('newInput', action.newInput);
+        .set('newInput', action.newInput)
+        .set('inputs', [...state.get('inputs'), action.newInput]);
     case SEND_NEWINPUT_ERROR:
       return state.set('loading', false).set('error', action.error);
     default:

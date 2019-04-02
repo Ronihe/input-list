@@ -16,13 +16,13 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectNewinput } from './selectors';
 import reducer from './reducer';
-import saga from './saga';
+import saga from '../App/saga';
 
 import Form from './Form';
 import Input from './Input';
 
 import { createNewInput } from './actions';
-
+import { sendNewInput } from '../App/actions';
 /* eslint-disable react/prefer-stateless-function */
 export class NewInputForm extends React.Component {
   render() {
@@ -32,8 +32,7 @@ export class NewInputForm extends React.Component {
           <title>NewInputForm</title>
           <meta name="description" content="Description of NewInputForm" />
         </Helmet>
-        {/* <Form onSubmit={this.props.onSubmitForm}> */}
-        <label htmlFor="input">
+        <Form onSubmit={this.props.onSubmitForm}>
           <Input
             id="input"
             type="text"
@@ -41,8 +40,9 @@ export class NewInputForm extends React.Component {
             value={this.props.newInput}
             onChange={this.props.createNewInput}
           />
-        </label>
-        {/* </Form> */}
+
+          <button onClick={this.props.sendNewInput}>Submit</button>
+        </Form>
       </div>
     );
   }
@@ -61,6 +61,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     createNewInput: evt => dispatch(createNewInput(evt.target.value)),
+    sendNewInput: evt => {
+      evt.preventDefault();
+      dispatch(sendNewInput());
+    },
   };
 }
 
@@ -70,7 +74,7 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'newInputForm', reducer });
-const withSaga = injectSaga({ key: 'newInputForm', saga });
+const withSaga = injectSaga({ key: 'inputs', saga });
 
 export default compose(
   withReducer,
