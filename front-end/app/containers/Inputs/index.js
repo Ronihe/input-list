@@ -33,8 +33,11 @@ export class Inputs extends React.Component {
           <title>Inputs</title>
           <meta name="description" content="Description of Inputs" />
         </Helmet>
-        {inputs.map(input => (
-          <p key={input.id}>{input.input}</p>
+        {inputs.reverse().map(input => (
+          <p key={input.id}>
+            {input.date_posted.split('T')[0]}
+            {input.input}
+          </p>
         ))}
       </div>
     );

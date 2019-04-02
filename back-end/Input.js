@@ -10,6 +10,7 @@ class Input {
 
   static async createOne(data) {
     // error handling, if there is no input, should be handled inthe front end
+    console.log('What is the data', data);
     const result = await db.query(
       `INSERT INTO inputs (input) VALUES ($1) RETURNING *`,
       [data.input]
