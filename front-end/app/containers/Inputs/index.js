@@ -37,7 +37,9 @@ export class Inputs extends React.Component {
           <title>Inputs</title>
           <meta name="description" content="Description of Inputs" />
         </Helmet>
-        <FormattedMessage {...messages.header} />
+        {inputs.map(input => (
+          <p key={input.id}>{input.input}</p>
+        ))}
       </div>
     );
   }

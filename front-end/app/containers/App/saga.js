@@ -6,6 +6,7 @@ import {
   select,
   takeEvery,
 } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import request from 'utils/request';
 import {
   loadInputsError,
@@ -53,6 +54,7 @@ export function* postNewInput() {
     const newInput = result.input.input;
     console.log('newInput', newInput);
     yield put(sendNewInputSuccess(newInput));
+    yield put(push('/'));
   } catch (err) {
     yield put(sendNewInputError(err));
   }

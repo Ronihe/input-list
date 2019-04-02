@@ -6,6 +6,6 @@ CREATE DATABASE inputs_db;
 CREATE TABLE inputs
 (
   id SERIAL PRIMARY KEY,
-  input TEXT NOT NULL
-  -- votes INTEGER DEFAULT 0
+  input TEXT NOT NULL,
+  date_posted TIMESTAMP NOT NULL default CURRENT_TIMESTAMP
 );
