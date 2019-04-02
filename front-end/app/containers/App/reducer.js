@@ -34,10 +34,8 @@ function inputsReducer(state = initialState, action) {
     case LOAD_INPUTS_ERROR:
       return state.set('loading', false).set('error', action.error);
     case SEND_NEWINPUT:
-      console.log('SENDING INPUT');
       return state.set('sending', true).set('error', false);
     case SEND_NEWINPUT_SUCCESS:
-      console.log('SEND_NEWINPUT_SUCCESS', state.inputs, action);
       return state
         .set('loading', false)
         .set('error', false)

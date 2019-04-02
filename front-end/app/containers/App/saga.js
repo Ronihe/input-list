@@ -6,7 +6,6 @@ import {
   select,
   takeEvery,
 } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
 import request from 'utils/request';
 import {
   loadInputsError,
@@ -18,7 +17,6 @@ import { LOAD_INPUTS, SEND_NEWINPUT } from './constants';
 import { makeSelectNewinput } from '../NewInputForm/selectors';
 
 export function* fetchInputs() {
-  console.log('did I get here?');
   const requestURL = 'http://localhost:3001/inputs';
   try {
     const result = yield call(request, requestURL);
@@ -52,7 +50,6 @@ export function* postNewInput() {
   try {
     const result = yield call(request, requestURL, options);
     const newInput = result.input;
-    // yield put(push('/'));
     yield put(sendNewInputSuccess(newInput));
   } catch (err) {
     yield put(sendNewInputError(err));
