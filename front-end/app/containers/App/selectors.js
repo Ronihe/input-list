@@ -22,7 +22,14 @@ const makeInputsSelector = () =>
 
 const makeInputLoading = () =>
   createSelector(selectInputsDomain, globalState => globalState.get('loading'));
+const makeInputLoadingError = () =>
+  createSelector(selectInputsDomain, globalState => globalState.get('error'));
 
 export default makeSelectInputs;
 
-export { selectInputsDomain, makeInputsSelector, makeInputLoading };
+export {
+  selectInputsDomain,
+  makeInputsSelector,
+  makeInputLoading,
+  makeInputLoadingError,
+};

@@ -13,10 +13,16 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { makeInputsSelector } from '../App/selectors';
+import InputsList from '../../components/InputsList';
+import {
+  makeInputsSelector,
+  makeInputLoadingError,
+  makeInputLoading,
+} from '../App/selectors';
 import { loadInputs } from '../App/actions';
 import reducer from '../App/reducer';
 import saga from '../App/saga';
+import DisplayInputs from './DisplayInputs';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Inputs extends React.Component {
@@ -26,20 +32,22 @@ export class Inputs extends React.Component {
   }
 
   render() {
-    const inputs = [...this.props.inputs];
+    const { loading, error, inputs } = this.props;
+    const inputsListProps = {
+      loading,
+      error,
+      inputs,
+    };
+
     return (
-      <div>
+      <DisplayInputs>
         <Helmet>
           <title>Inputs</title>
           <meta name="description" content="Description of Inputs" />
         </Helmet>
-        {inputs.reverse().map(input => (
-          <p key={input.id}>
-            {input.date_posted.split('T')[0]}
-            {input.input}
-          </p>
-        ))}
-      </div>
+
+        <InputsList {...inputsListProps} />
+      </DisplayInputs>
     );
   }
 }
@@ -51,6 +59,8 @@ Inputs.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   inputs: makeInputsSelector(),
+  loading: makeInputLoading(),
+  error: makeInputLoadingError(),
 });
 
 function mapDispatchToProps(dispatch) {

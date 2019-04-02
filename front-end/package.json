@@ -76,6 +76,7 @@
     "lodash": "4.17.11",
     "minimist": "1.2.0",
     "prop-types": "15.6.2",
+    "rc-table": "^6.4.3",
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "react-helmet": "5.2.0",
