@@ -22,7 +22,7 @@ export const initialState = fromJS({
   sending: false,
 });
 
-function inputsReducer(state = initialState, action) {
+function appReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_INPUTS:
       return state.set('loading', true).set('error', false);
@@ -40,7 +40,7 @@ function inputsReducer(state = initialState, action) {
         .set('loading', false)
         .set('error', false)
         .set('newInput', action.newInput)
-        .set('inputs', [...state.get('inputs'), action.newInput]);
+        .set('inputs', [...state.get('inputs').reverse(), action.newInput]);
     case SEND_NEWINPUT_ERROR:
       return state.set('loading', false).set('error', action.error);
     default:
@@ -48,4 +48,4 @@ function inputsReducer(state = initialState, action) {
   }
 }
 
-export default inputsReducer;
+export default appReducer;

@@ -45,6 +45,7 @@ export class NewInputForm extends React.Component {
           />
 
           <Button
+            style={{ backgroundColor: '#FF6347' }}
             type="submit"
             form="input"
             onClick={

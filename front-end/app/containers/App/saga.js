@@ -59,7 +59,7 @@ export function* postNewInput() {
 // WATCHERS
 
 export function* sendNewInput() {
-  yield takeEvery(SEND_NEWINPUT, postNewInput);
+  yield takeLatest(SEND_NEWINPUT, postNewInput);
 }
 
 // Individual exports for testing

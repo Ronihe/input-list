@@ -22,12 +22,12 @@ class NavBar extends React.Component {
     return (
       <div>
         <StyledNavBar>
-          <Button>
+          <Button style={{ backgroundColor: '#32CD32' }}>
             <StyledNavLink exact to="/">
               INPUTS
             </StyledNavLink>{' '}
           </Button>
-          <Button>
+          <Button style={{ backgroundColor: '#40E0D0' }}>
             <StyledNavLink exact to="/newinput">
               NEW INPUT
             </StyledNavLink>
