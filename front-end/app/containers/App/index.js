@@ -26,8 +26,12 @@ export default function App() {
         new Input
       </NavLink>
       <Switch>
-        <Route exact path="/" component={Inputs} />
-        <Route exact path="/newinput" component={NewInputForm} />
+        <Route exact path="/" render={() => <Inputs />} />
+        <Route
+          exact
+          path="/newinput"
+          render={props => <NewInputForm {...props} />}
+        />
         {/* make api from back end get the list input from the render it on the screen */}
         {/* todo: add a new input form component;  */}
         <Route component={NotFoundPage} />

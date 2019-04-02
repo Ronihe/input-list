@@ -27,7 +27,6 @@ function inputsReducer(state = initialState, action) {
     case LOAD_INPUTS:
       return state.set('loading', true).set('error', false);
     case LOAD_INPUTS_SUCCESS:
-      console.log('load success', state.inputs);
       return state
         .set('loading', false)
         .set('error', false)

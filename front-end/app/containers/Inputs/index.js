@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -18,7 +17,6 @@ import { makeInputsSelector } from '../App/selectors';
 import { loadInputs } from '../App/actions';
 import reducer from '../App/reducer';
 import saga from '../App/saga';
-import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Inputs extends React.Component {
@@ -29,8 +27,6 @@ export class Inputs extends React.Component {
 
   render() {
     const inputs = [...this.props.inputs];
-    console.log('inputs', typeof inputs, inputs);
-    console.log('loadInputs', typeof loadInputs);
     return (
       <div>
         <Helmet>

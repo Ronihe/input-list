@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { push } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -18,11 +18,13 @@ import { makeSelectNewinput } from './selectors';
 import reducer from './reducer';
 import saga from '../App/saga';
 
-import Form from './Form';
 import Input from './Input';
 
-import { createNewInput } from './actions';
+import { changeInput, clearInput } from './actions';
 import { sendNewInput } from '../App/actions';
+
+import Button from '../../components/atoms/Button';
+
 /* eslint-disable react/prefer-stateless-function */
 export class NewInputForm extends React.Component {
   render() {
@@ -32,26 +34,36 @@ export class NewInputForm extends React.Component {
           <title>NewInputForm</title>
           <meta name="description" content="Description of NewInputForm" />
         </Helmet>
-        <Form onSubmit={this.props.onSubmitForm}>
+        <form id="input">
           <Input
             id="input"
             type="text"
             placeholder="random ideas"
             value={this.props.newInput}
-            onChange={this.props.createNewInput}
+            onChange={this.props.changeInput}
           />
-
-          <button onClick={this.props.sendNewInput}>Submit</button>
-        </Form>
+        </form>
+        <Button
+          type="submit"
+          form="input"
+          onClick={
+            this.props.newInput
+              ? this.props.sendNewInput
+              : // eslint-disable-next-line no-alert
+                () => alert('please put in some random ideas')
+          }
+        >
+          Submit
+        </Button>
       </div>
     );
   }
 }
 
 NewInputForm.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
   newInput: PropTypes.string,
-  createNewInput: PropTypes.func,
+  changeInput: PropTypes.func,
+  sendNewInput: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -60,10 +72,11 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    createNewInput: evt => dispatch(createNewInput(evt.target.value)),
-    sendNewInput: evt => {
-      evt.preventDefault();
+    changeInput: evt => dispatch(changeInput(evt.target.value)),
+    sendNewInput: () => {
       dispatch(sendNewInput());
+      dispatch(clearInput());
+      dispatch(push('/'));
     },
   };
 }

@@ -8,11 +8,16 @@
  *
  */
 
-import { CHANGE_INPUT } from './constants';
+import { CHANGE_INPUT, CLEAR_INPUT } from './constants';
 
-export function createNewInput(newInput) {
+export function changeInput(newInput) {
   return {
     type: CHANGE_INPUT,
     newInput,
+  };
+}
+export function clearInput() {
+  return {
+    type: CLEAR_INPUT,
   };
 }

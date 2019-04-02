@@ -51,10 +51,9 @@ export function* postNewInput() {
   };
   try {
     const result = yield call(request, requestURL, options);
-    const newInput = result.input.input;
-    console.log('newInput', newInput);
+    const newInput = result.input;
+    // yield put(push('/'));
     yield put(sendNewInputSuccess(newInput));
-    yield put(push('/'));
   } catch (err) {
     yield put(sendNewInputError(err));
   }
