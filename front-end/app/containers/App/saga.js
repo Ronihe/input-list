@@ -1,11 +1,4 @@
-import {
-  call,
-  put,
-  all,
-  takeLatest,
-  select,
-  takeEvery,
-} from 'redux-saga/effects';
+import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import {
   loadInputsError,
@@ -38,7 +31,6 @@ export function* loadInputs() {
 
 export function* postNewInput() {
   const input = yield select(makeSelectNewinput());
-  console.log('what is input in saga', input);
   const requestURL = 'http://localhost:3001/inputs';
   const options = {
     method: 'POST',
