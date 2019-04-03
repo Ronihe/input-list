@@ -23,29 +23,6 @@ describe('<ReposList />', () => {
     expect(renderedComponent.text()).toMatch(/Something went wrong/);
   });
 
-  it('should render the repositories if loading was successful', () => {
-    const repos = [
-      {
-        owner: {
-          login: 'mxstbr',
-        },
-        html_url: 'https://github.com/react-boilerplate/react-boilerplate',
-        name: 'react-boilerplate',
-        open_issues_count: 20,
-        full_name: 'react-boilerplate/react-boilerplate',
-      },
-    ];
-    const renderedComponent = shallow(
-      <ReposList repos={repos} error={false} />,
-    );
-
-    expect(
-      renderedComponent.contains(
-        <List items={repos} component={RepoListItem} />,
-      ),
-    ).toEqual(true);
-  });
-
   it('should not render anything if nothing interesting is provided', () => {
     const renderedComponent = shallow(
       <ReposList repos={false} error={false} loading={false} />,

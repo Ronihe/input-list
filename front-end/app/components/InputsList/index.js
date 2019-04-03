@@ -19,7 +19,10 @@ function InputsList({ loading, error, inputs }) {
 
   if (inputs !== false) {
     const modifiedInputs = inputs.reverse().map(input => {
-      input.date_posted = input.date_posted.split('T')[0];
+      // eslint-disable-next-line prefer-destructuring
+      const styledDate = input.date_posted.split('T')[0];
+      // eslint-disable-next-line no-param-reassign
+      input.date_posted = styledDate;
       return input;
     });
 

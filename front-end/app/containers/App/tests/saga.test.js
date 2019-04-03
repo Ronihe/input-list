@@ -15,12 +15,7 @@ import {
   sendNewInputSuccess,
 } from '../actions';
 
-import defaultSaga, {
-  fetchInputs,
-  loadInputs,
-  postNewInput,
-  sendNewInput,
-} from '../saga';
+import defaultSaga, { fetchInputs, postNewInput } from '../saga';
 
 const watcherSagas = defaultSaga();
 
