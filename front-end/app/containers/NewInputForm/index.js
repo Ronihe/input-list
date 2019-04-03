@@ -51,7 +51,7 @@ export class NewInputForm extends React.Component {
             onClick={
               this.props.newInput
                 ? this.props.sendNewInput
-                : alert('please put in some random ideas')
+                : () => alert('please put in some random ideas')
             }
           >
             Submit
