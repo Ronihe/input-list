@@ -4,18 +4,18 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectInputsDomain = state => state.get('inputs', initialState);
+const selectAppDomain = state => state.get('app', initialState);
 
 const makeInputsSelector = () =>
-  createSelector(selectInputsDomain, globalState => globalState.get('inputs'));
+  createSelector(selectAppDomain, globalState => globalState.get('inputs'));
 
 const makeInputLoading = () =>
-  createSelector(selectInputsDomain, globalState => globalState.get('loading'));
+  createSelector(selectAppDomain, globalState => globalState.get('loading'));
 const makeInputLoadingError = () =>
-  createSelector(selectInputsDomain, globalState => globalState.get('error'));
+  createSelector(selectAppDomain, globalState => globalState.get('error'));
 
 export {
-  selectInputsDomain,
+  selectAppDomain,
   makeInputsSelector,
   makeInputLoading,
   makeInputLoadingError,
