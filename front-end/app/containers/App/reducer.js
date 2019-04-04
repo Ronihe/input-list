@@ -27,10 +27,12 @@ function appReducer(state = initialState, action) {
     case LOAD_INPUTS:
       return state.set('loading', true).set('error', false);
     case LOAD_INPUTS_SUCCESS:
+      // eslint-disable-next-line no-case-declarations
+      const newState = action.inputs;
       return state
         .set('loading', false)
         .set('error', false)
-        .set('inputs', action.inputs.reverse());
+        .set('inputs', newState);
     case LOAD_INPUTS_ERROR:
       return state.set('loading', false).set('error', action.error);
     case SEND_NEWINPUT:

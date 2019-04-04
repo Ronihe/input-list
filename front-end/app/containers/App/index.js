@@ -53,10 +53,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const mapStateToProps = createStructuredSelector({});
-
 const withConnect = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 );
 

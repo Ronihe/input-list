@@ -46,12 +46,10 @@ export class NewInputForm extends React.Component {
 
           <Button
             style={{ backgroundColor: '#FF6347' }}
-            type="submit"
-            form="input"
             onClick={
-              this.props.newInput
-                ? this.props.sendNewInput
-                : () => alert('please put in some random ideas')
+              // this.props.newInput
+              this.props.sendNewInput
+              // : () => alert('please put in some random ideas')
             }
           >
             Submit
@@ -75,7 +73,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     changeInput: evt => dispatch(changeInput(evt.target.value)),
-    sendNewInput: () => {
+    sendNewInput: evt => {
+      evt.preventDefault();
       dispatch(sendNewInput());
       dispatch(clearInput());
       dispatch(push('/'));
@@ -89,10 +88,8 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'newInputForm', reducer });
-const withSaga = injectSaga({ key: 'inputs', saga });
 
 export default compose(
   withReducer,
-  withSaga,
   withConnect,
 )(NewInputForm);

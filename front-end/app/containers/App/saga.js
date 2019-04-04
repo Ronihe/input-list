@@ -1,4 +1,11 @@
-import { call, put, all, takeLatest, select } from 'redux-saga/effects';
+import {
+  call,
+  put,
+  all,
+  takeLatest,
+  select,
+  takeEvery,
+} from 'redux-saga/effects';
 import request from 'utils/request';
 import {
   loadInputsError,
@@ -12,6 +19,7 @@ import { makeSelectNewinput } from '../NewInputForm/selectors';
 export function* fetchInputs() {
   const requestURL = 'http://localhost:3001/inputs';
   try {
+    console.log('I am fetching inputs');
     const result = yield call(request, requestURL);
     const inputs = [...result.inputs];
     yield put(loadInputsSuccess(inputs));
@@ -26,6 +34,8 @@ export function* fetchInputs() {
 // }
 
 export function* loadInputs() {
+  console.log('I am listenning to the posting inout');
+
   yield takeLatest(LOAD_INPUTS, fetchInputs);
 }
 
@@ -40,8 +50,10 @@ export function* postNewInput() {
     body: JSON.stringify({ input }),
   };
   try {
+    console.log(options.body);
     const result = yield call(request, requestURL, options);
     const newInput = result.input;
+    console.log('I am the new input', input);
     yield put(sendNewInputSuccess(newInput));
   } catch (err) {
     yield put(sendNewInputError(err));
@@ -51,7 +63,8 @@ export function* postNewInput() {
 // WATCHERS
 
 export function* sendNewInput() {
-  yield takeLatest(SEND_NEWINPUT, postNewInput);
+  console.log('I am listenning to the sending new inout');
+  yield takeEvery(SEND_NEWINPUT, postNewInput);
 }
 
 // Individual exports for testing
