@@ -11,7 +11,8 @@ app.use(express.json());
 app.get('/inputs', async function(req, res, next) {
   try {
     const inputs = await Input.getAll();
-    return res.json({ inputs });
+    const reversedInputs = inputs.reverse();
+    return res.json({ inputs: reversedInputs });
   } catch (err) {
     return next(err);
   }
