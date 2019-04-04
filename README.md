@@ -10,9 +10,9 @@
 
 <b>Front End</b>
 
-- The project is built with [react-boilerplate](https://www.reactboilerplate.com)( A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices)vA highly scalable, offline-first foundation with the best DX and a focus on performance and best practices)
+- The project is built with [react-boilerplate](https://www.reactboilerplate.com)( one of the most popular starter kits for React. A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices)vA highly scalable, offline-first foundation with the best DX and a focus on performance and best practices)
 
-* JavaScript ES6 (Uses async/await)
+* JavaScript ES6 (Uses generator functions)
 * React.js - front end web framework (Maintained by FB)
 * React-Router - routing library for React
 * Redux - library for React state management

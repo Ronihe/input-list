@@ -71,8 +71,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     changeInput: evt => dispatch(changeInput(evt.target.value)),
-    sendNewInput: evt => {
-      evt.preventDefault();
+    sendNewInput: () => {
       dispatch(sendNewInput());
       dispatch(clearInput());
       dispatch(push('/'));
