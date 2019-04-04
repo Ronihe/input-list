@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/named */
 /**
  *
  * Inputs
@@ -9,28 +11,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
 import InputsList from '../../components/InputsList';
 import {
   makeInputsSelector,
   makeInputLoadingError,
   makeInputLoading,
 } from '../App/selectors';
-import { loadInputs } from '../App/actions';
-import reducer from '../App/reducer';
-import saga from '../App/saga';
 import DisplayInputs from './DisplayInputs';
 
 /* eslint-disable react/prefer-stateless-function */
-export class Inputs extends React.Component {
-  componentDidMount() {
-    // load inputs
-    this.props.loadInputs();
-  }
 
+export class Inputs extends React.Component {
   render() {
     const { loading, error, inputs } = this.props;
     const inputsListProps = {
@@ -53,8 +45,9 @@ export class Inputs extends React.Component {
 }
 
 Inputs.propTypes = {
-  loadInputs: PropTypes.func.isRequired,
   inputs: PropTypes.any,
+  loading: PropTypes.any,
+  error: PropTypes.any,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -63,24 +56,6 @@ const mapStateToProps = createStructuredSelector({
   error: makeInputLoadingError(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadInputs: () => {
-      dispatch(loadInputs());
-    },
-  };
-}
+const withConnect = connect(mapStateToProps);
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-const withReducer = injectReducer({ key: 'inputs', reducer });
-const withSaga = injectSaga({ key: 'inputs', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(Inputs);
+export default withConnect(Inputs);

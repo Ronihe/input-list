@@ -18,7 +18,7 @@ function InputsList({ loading, error, inputs }) {
   }
 
   if (inputs !== false) {
-    const modifiedInputs = inputs.reverse().map(input => {
+    const modifiedInputs = inputs.map(input => {
       // eslint-disable-next-line prefer-destructuring
       const styledDate = input.date_posted.split('T')[0];
       // eslint-disable-next-line no-param-reassign
@@ -30,7 +30,7 @@ function InputsList({ loading, error, inputs }) {
       {
         title: 'Posting_Date',
         dataIndex: 'date_posted',
-        key: 'id',
+        key: 'date',
         width: 1000,
       },
       {
@@ -40,7 +40,7 @@ function InputsList({ loading, error, inputs }) {
         width: 1500,
       },
     ];
-    return <Table columns={columns} data={modifiedInputs} />;
+    return <Table columns={columns} data={modifiedInputs} rowKey="id" />;
   }
 
   return null;

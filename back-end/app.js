@@ -20,7 +20,6 @@ app.get('/inputs', async function(req, res, next) {
 // create one input
 
 app.post('/inputs', async function(req, res, next) {
-  console.log('routes', req);
   try {
     const input = await Input.createOne(req.body);
     return res.status(201).json({ input });
