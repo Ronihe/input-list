@@ -47,9 +47,9 @@ export class NewInputForm extends React.Component {
           <Button
             style={{ backgroundColor: '#FF6347' }}
             onClick={
-              // this.props.newInput
-              this.props.sendNewInput
-              // : () => alert('please put in some random ideas')
+              this.props.newInput
+                ? this.props.sendNewInput
+                : () => alert('please put in some random ideas')
             }
           >
             Submit
