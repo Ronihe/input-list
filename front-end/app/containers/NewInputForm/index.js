@@ -12,11 +12,9 @@ import { push } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
-import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { makeSelectNewinput } from './selectors';
 import reducer from './reducer';
-import saga from '../App/saga';
 
 import Input from '../../components/Input';
 
@@ -45,7 +43,7 @@ export class NewInputForm extends React.Component {
           />
 
           <Button
-            style={{ backgroundColor: '#FF6347' }}
+            bgColor="#FF6347"
             onClick={
               this.props.newInput
                 ? this.props.sendNewInput
