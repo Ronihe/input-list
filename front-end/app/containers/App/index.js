@@ -15,7 +15,7 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 
 import reducer from './reducer';
 import saga from './saga';
@@ -24,6 +24,10 @@ import NavBar from '../../components/NavBar/Loadable';
 import GlobalStyle from '../../global-styles';
 
 import { loadInputs } from './actions';
+import NewInputForm from '../NewInputForm/Loadable';
+import NotFoundPage from '../NotFoundPage/Loadable';
+import Inputs from '../Inputs/Loadable';
+
 export class App extends React.Component {
   componentDidMount() {
     // load inputs
@@ -34,6 +38,15 @@ export class App extends React.Component {
     return (
       <div>
         <NavBar />
+        <Switch>
+          <Route exact path="/" render={() => <Inputs />} />
+          <Route
+            exact
+            path="/newinput"
+            render={props => <NewInputForm {...props} />}
+          />
+          <Route component={NotFoundPage} />
+        </Switch>
         <GlobalStyle />
       </div>
     );
