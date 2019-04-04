@@ -19,7 +19,6 @@ export const initialState = fromJS({
   newInput: '',
   loading: false,
   error: true,
-  sending: false,
 });
 
 function appReducer(state = initialState, action) {
@@ -36,7 +35,7 @@ function appReducer(state = initialState, action) {
     case LOAD_INPUTS_ERROR:
       return state.set('loading', false).set('error', action.error);
     case SEND_NEWINPUT:
-      return state.set('sending', true).set('error', false);
+      return state.set('loading', true).set('error', false);
     case SEND_NEWINPUT_SUCCESS:
       return state
         .set('loading', false)
