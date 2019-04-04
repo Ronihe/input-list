@@ -2,9 +2,8 @@
  * The global state selectors
  */
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
 
-const selectAppDomain = state => state.get('app', initialState);
+const selectAppDomain = state => state.get('app');
 
 const makeInputsSelector = () =>
   createSelector(selectAppDomain, globalState => globalState.get('inputs'));

@@ -1,12 +1,10 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
 
 /**
  * Direct selector to the newInputForm state domain
  */
 
-const selectNewInputFormDomain = state =>
-  state.get('newInputForm', initialState);
+const selectNewInputFormDomain = state => state.get('newInputForm');
 
 /**
  * Other specific selectors
